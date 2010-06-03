@@ -31,6 +31,8 @@ map ,q :q!<CR>
 
 map ,w :x<CR>
 
+map ,pp :!php -l %<CR>
+
 " Commenting Perl-Style
 vmap  ,pc      :s/^/#<space>/<CR>:nohlsearch<CR>
 vmap  ,pu      :s/^#<space>//<CR>
