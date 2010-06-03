@@ -1,0 +1,7 @@
+*
+!.ssh/config
+!.vimrc
+!.vim
+!.screenrc
+!.bashrc
+!.gitignore

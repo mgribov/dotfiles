@@ -1,0 +1,25 @@
+# turn off the annoying startup message
+startup_message off
+# # scrollback for default windows
+defscrollback 5000
+scrollback 5000
+shell bash
+#
+# # make shift pgup/pgdn work
+# #bindkey "^[[5;2~" eval "copy" "stuff ^u"
+# #bindkey -m "^[[5;2~" stuff ^u
+# #bindkey -m "^[[6;2~" stuff ^d
+#
+# #bindkey ^[[5;3~ eval "copy" "stuff \"^u\"" # alt-page-up goes to copy mode
+# #bindkey ^[[6;3~ eval "copy"  # alt-page-down goes to copy mode
+# #bindkey -m ^[[5;3~ stuff "^u" # alt-page-up sends page-up in copy mode
+# #bindkey -m ^[[6;3~ stuff "^d" # alt-page-down sends page-down in copy mode
+#
+termcapinfo xterm|xterms|xs|rxvt ti@:te@
+#
+setenv LC_CTYPE en_US.UTF-8
+#
+vbell off
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+
