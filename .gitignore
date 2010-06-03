@@ -2,6 +2,10 @@
 !.ssh/config
 !.vimrc
 !.vim
+!.vim/php-doc.vim
+!.vim/python.vim
+!.vim/yaml.vim
 !.screenrc
 !.bashrc
 !.gitignore
+!.gitconfig
