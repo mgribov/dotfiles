@@ -1,3 +1,22 @@
+[core]
+        repositoryformatversion = 0
+        filemode = true
+
 [user]
 	name = Max Gribov
 	email = max@neuropunks.org
+
+[alias]
+        stat = status
+        ci = commit
+        co = checkout
+        diff = diff -w -C
+        br = branch
+        cp = cherry-pick
+
+[diff]
+        renames = copy
+
+[merge]
+        tool = vimdiff
+
