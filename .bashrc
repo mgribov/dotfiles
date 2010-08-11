@@ -2,6 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 export PATH=$PATH:~/bin
+export EDITOR=vim
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -49,13 +50,20 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+function __git_prompt()
+{
+        x=$(git branch --no-color 2>/dev/null | grep '^*'| awk '{print ($2)}') || return
+        (test -z "$x" && echo "") || echo git:$x: 
+        #echo $x
+}
+
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     #PS1="\d \t: \u@\H: \w "
  
 else
     #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-    PS1="\d \t: [\u@\H:] \[\033[01;34m\]\w\[\033[00m\] \$ "
+    PS1="\d \t: [\u@\H:] \\[\e[1;31m\]\$(__git_prompt)\[\e[0m\]\[\033[01;34m\]\w\[\033[00m\] \$ "
  
 fi
 unset color_prompt force_color_prompt
