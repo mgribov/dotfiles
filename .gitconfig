@@ -1,3 +1,7 @@
+[core]
+        repositoryformatversion = 0
+        filemode = true
+
 [user]
 	name = Max Gribov
 	email = max@neuropunks.org
