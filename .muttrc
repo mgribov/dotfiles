@@ -19,9 +19,10 @@ set from="max@neuropunks.org"
 set realname="Max Gribov"
 
 set charset=iso-8859-1
-set send_charset=iso-8869-1
+#set send_charset=iso-8869-1
 charset-hook us-ascii iso-8859-1
 
+set header_cache="~/.muttcache"
 set pager_stop
 set envelope_from=yes
 set abort_nosubject=no
