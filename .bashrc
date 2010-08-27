@@ -12,10 +12,30 @@ HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoreboth
 
+# ignore relatively meaningless commands.
+export HISTIGNORE="fg*:bg*:history*"
+
+# store a lot of commands
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+# store multiline commands as single entries in history file
+shopt -s cmdhist
+
+# allow re-editing of a history command substitution, if the previous run failed
+shopt -s histreedit
+
+# correct spelling mistakes
+shopt -s cdspell
+
+# look at variables that might hold directory paths
+# shopt -s cdable_vars
+
+# tab-completion of hostnames after @
+shopt -s hostcomplete
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -111,3 +131,7 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+# Check for local mail
+MAILCHECK=30
+MAILPATH=~/Maildir/new?"You have a new mail."
