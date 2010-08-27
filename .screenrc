@@ -20,9 +20,12 @@ vbell off
 termcapinfo xterm|xterms|xs|rxvt ti@:te@
 setenv LC_CTYPE en_US.UTF-8
 
-#hardstatus alwayslastline
+hardstatus alwayslastline
 #hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+hardstatus string "%{yA} $LOGNAME@%H |LOAD: %l | %C %A - %M-%d-%Y | %-Lw%50>%{Ky}%n%f* %t%{-}%+Lw%<%{- Wk}%{yA} | "
 
 activity        "activity in %n (%t) [%w:%s]~"
 
-caption always "%{yK} $LOGNAME@%H |LOAD: %l | %C %A - %M-%d-%Y | %-Lw%50>%{Ky}%n%f* %t%{-}%+Lw%<%{- Wk}%{yK} | "
+#caption always "%{yK} $LOGNAME@%H |LOAD: %l | %C %A - %M-%d-%Y | %-Lw%50>%{Ky}%n%f* %t%{-}%+Lw%<%{- Wk}%{yK} | "
+
+
