@@ -1,0 +1,91 @@
+set mbox_type=Maildir
+set folder="~/Maildir"
+#set mask="!^\\.[^.]"
+set mask="^\.[a-zA-Z0-9]"
+set mbox="~/Maildir"
+set record="+.Sent"
+set postponed="+.Drafts"
+set spoolfile="~/Maildir"
+#mailboxes `echo -n "+ "; find ~/Maildir -maxdepth 1 -type d -name ".*" -printf "+'%f' "`
+mailboxes `find ~/Maildir -maxdepth 1 -type d -name ".*"`
+
+# set spoolfile="imap://max@127.0.0.1/"
+# set folder="imap://max@127.0.0.1/"
+# set record="=INBOX.Sent"
+# set postponed="=INBOX.Drafts"
+
+set hostname=neuropunks.org
+set from="max@neuropunks.org"
+set realname="Max Gribov"
+
+set charset=iso-8859-1
+set send_charset=iso-8869-1
+charset-hook us-ascii iso-8859-1
+
+set pager_stop
+set envelope_from=yes
+set abort_nosubject=no
+set abort_unmodified=yes
+#set arrow_cursor
+set delete=yes                  # purge deleted messages without asking
+set copy=yes                    # always save a copy of outgoing messages
+set include                     # always include messages when replying
+set fast_reply                  # skip initial prompts when replying
+set nomark_old                  # i don't care about whether a message is old
+set read_inc=25                 # show progress when reading a mailbox
+set write_inc=25                # show progress while writing mailboxes
+
+#set index_format="%4C %Z %{%m-%d-%y %H:%m} [%2N] %-15.15F (%4c) %s"
+set index_format="%4C %Z %{%m-%d-%y %H:%m} %-15.15F (%4c) %s"
+#set index_format="%4C %Z %{%m/%d} %-15.15F (%4c) %s" # format of the index
+
+# headers
+ignore *
+unignore date: from: to: cc: subject: x-mailer: reply-to:
+
+# maildir macros
+macro index c "<change-folder>?<toggle-mailboxes>" "open a different folder"
+macro pager c "<change-folder>?<toggle-mailboxes>" "open a different folder"
+macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+macro compose A "<attach-message>?<toggle-mailboxes>" "attach message(s) to this message"
+
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Color definitions
+#
+
+#color normal white default
+color hdrdefault red default
+color quoted brightblue default
+color signature red default
+color indicator brightyellow blue
+color error brightred default
+color status brightyellow blue
+color tree magenta default      # the thread tree in the index menu
+color tilde magenta default
+color message cyan default
+color markers cyan default
+color attachment brightmagenta default
+color search default green      # how to hilite search patterns in the pager
+color header brightred default ^(Date|From|Subject|To|Reply-to):
+color body magenta default "(ftp|http|https)://[^ ]+"   # point out URLs
+color body magenta default [-a-z_0-9.]+@[-a-z_0-9.]+    # e-mail addresses
+color underline brightgreen default
+
+# attributes when using a mono terminal
+#mono header underline ^(From|Subject):
+mono quoted bold
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Automatically use entries from ~/.mailcap to view these MIME types
+#
+#       auto_view <type> [ <type> ... ]
+
+auto_view application/x-gunzip
+auto_view application/x-gzip
+
+#source ~/.muttrc-local  # config commands local to this site
