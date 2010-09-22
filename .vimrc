@@ -8,11 +8,13 @@ set novisualbell
 set noerrorbells
 set ruler
 set bs=indent,eol,start
-"set number
+set paste
 set autoindent
 set hlsearch
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set laststatus=2                        " always show the status line
+set smartindent
+set nobackup
 
 set viminfo='20,\"50    " read/write a .viminfo file, don't store more
                         " than 50 lines of registers
@@ -38,21 +40,36 @@ map ,w :x<CR>
 map ,pp :!php -l %<CR>
 
 " Commenting Perl-Style
-vmap  ,pc      :s/^/#<space>/<CR>:nohlsearch<CR>
-vmap  ,pu      :s/^#<space>//<CR>
+vmap  ,pc       :s/^/#<space>/<CR>:nohlsearch<CR>
+vmap  ,pu       :s/^#<space>//<CR>
 
 " Commenting SQL-Style
-vmap  ,sc      :s/^/-- <space>/<CR>:nohlsearch<CR>
-vmap  ,su      :s/^-- <space>//<CR>
+vmap  ,sc       :s/^/-- <space>/<CR>:nohlsearch<CR>
+vmap  ,su       :s/^-- <space>//<CR>
 
 " Commenting Lisp-Style
-vmap  ,lc      :s/^/;;<space>/<CR>:nohlsearch<CR>
-vmap  ,lu      :s/^;;<space>//<CR>
+vmap  ,lc       :s/^/;;<space>/<CR>:nohlsearch<CR>
+vmap  ,lu       :s/^;;<space>//<CR>
 
 " C-Style
-vmap  ,cc      :<esc>'<O<Tab><Left><Left>/*<esc>'>o<Tab><Left>*/<esc>gv
-vmap  ,cu      :<esc>'<dd'>dd
+vmap  ,cc       :<esc>'<O<Tab><Left><Left>/*<esc>'>o<Tab><Left>*/<esc>gv
+vmap  ,cu       :<esc>'<dd'>dd
 "
+
+" include phpdocblock
+inoremap ,d     ^[:call PhpDocSingle()<CR>i
+nnoremap ,d     :call PhpDocSingle()<CR>
+vnoremap ,d     :call PhpDocRange()<CR>
+
+" Map <CTRL>-H to search phpm for the function name currently under the cursor (insert mode only)
+"inoremap <C-H> <ESC>:!phpm <C-R>=expand("<cword>")<CR><CR>
+
+" The completion dictionary is provided by Rasmus:
+" http://lerdorf.com/funclist.txt
+setlocal dictionary-=~/.vim/funclist.txt dictionary+=~/.vim/funclist.txt
+" Use the dictionary completion
+setlocal complete-=k complete+=k
+
 
 au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/yaml.vim
 au BufNewFile,BufRead *.php so ~/.vim/php-doc.vim
