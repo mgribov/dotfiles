@@ -37,7 +37,7 @@
     set incsearch
     set gdefault                    " the /g flag on :s substitutions by default
     set foldenable                  " auto fold code
-    set scrolljump=5                " lines to scroll when cursor leaves screen
+    "set scrolljump=5                " lines to scroll when cursor leaves screen
     set wildmenu                    " show list instead of just completing
     set wildmode=list:longest,full  " comand <Tab> completion, list matches, then longest common part, then all.
 " }
@@ -111,9 +111,9 @@ setlocal dictionary-=~/.vim/funclist.txt dictionary+=~/.vim/funclist.txt
 " Use the dictionary completion
 setlocal complete-=k complete+=k
 
-"au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/yaml.vim
-"au BufNewFile,BufRead *.php so ~/.vim/php-doc.vim
-"au BufNewFile,BufRead *.py so ~/.vim/python.vim
+au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/syntax/yaml.vim
+au BufNewFile,BufRead *.php so ~/.vim/syntax/php.vim
+au BufNewFile,BufRead *.py so ~/.vim/syntax/python.vim
 au FileType xhtml,xml so ~/.vim/ftplugin/html_autoclosetag.vim
 syntax on
 
