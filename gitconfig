@@ -13,6 +13,9 @@
         diff = diff -w -C
         br = branch
         cp = cherry-pick
+        l = log --no-merges --pretty=format:'%Cred%h %Cgreen%ai %ae %Cblue%s'
+        ll = log --no-merges --pretty=format:'%Cred%h %Cgreen%ai %ae %Cblue%s%Creset' --stat
+
 
 [diff]
         renames = copy
